@@ -148,10 +148,9 @@ button {
 }
 
 .card {
-  width: 100%;
+  width: 31%;
   height: 100%;
   padding: 50px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
@@ -165,6 +164,10 @@ button {
   );
   backdrop-filter: blur(5px);
   margin-bottom: 30px;
+}
+
+.card h3, .card p{
+  margin-bottom: 20px;
 }
 
 #modal-background {
@@ -188,5 +191,12 @@ button {
   }
   .card {
     flex-direction: column;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    display: flex;
   }
 }
