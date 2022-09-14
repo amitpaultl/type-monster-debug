@@ -144,7 +144,6 @@ button {
 #histories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .card {
@@ -163,7 +162,7 @@ button {
     rgba(255, 255, 255, 0.05) 99.85%
   );
   backdrop-filter: blur(5px);
-  margin-bottom: 30px;
+  margin: 11px;
 }
 
 .card h3, .card p{
