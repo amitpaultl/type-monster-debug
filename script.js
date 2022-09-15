@@ -21,6 +21,8 @@ fetch("./texts.json")
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
+  
+
   const newLetter = e.key;
 
   // Handle backspace press
@@ -35,24 +37,26 @@ const typeController = (e) => {
 
   // if it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
-    return;
+
+    return ;
   }
 
   userText += newLetter;
-
   const newLetterCorrect = validate(newLetter);
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
+    ++errorCount
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
-
+  
   // check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
   }
 };
+
 
 const validate = (key) => {
   if (key === questionText[userText.length - 1]) {
@@ -69,7 +73,7 @@ const gameOver = () => {
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
   const secondsCount = parseInt(timeTaken)
-
+  
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
@@ -80,6 +84,7 @@ const gameOver = () => {
   display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
+  
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${secondsCount}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
@@ -94,6 +99,8 @@ const gameOver = () => {
   userText = "";
   display.classList.add("inactive");
 };
+
+
 
 const closeModal = () => {
   modalBackground.classList.toggle("hidden");
